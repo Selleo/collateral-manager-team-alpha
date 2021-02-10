@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root "collaterals#index"
 
   get "/collaterals", to: "collaterals#index"
+  get "/collaterals/new", to: "collaterals#new"
 end
