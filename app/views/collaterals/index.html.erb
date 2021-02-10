@@ -1,40 +1,24 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Name</th>
+      <th scope="col">Title</th>
+      <th scope="col">Link</th>
       <th scope="col">Type</th>
-      <th scope="col">Tags</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>
-        <button type="button" class="btn btn-outline-primary">Edit</button>
-        <button type="button" class="btn btn-outline-info">Open</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>
-        <button type="button" class="btn btn-outline-primary">Edit</button>
-        <button type="button" class="btn btn-outline-info">Open</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry the Bird</td>
-      <td>@twitter</td>
-      <td>
-        <button type="button" class="btn btn-outline-primary">Edit</button>
-        <button type="button" class="btn btn-outline-info">Open</button>
-      </td>
-    </tr>
+    <% @collaterals.each do |collateral|%>
+      <tr>
+        <th><%= collateral.title %></th>
+        <th><%= collateral.link %></th>
+        <th><%= collateral.content_type %></th>
+        <td>
+          <button type="button" class="btn btn-outline-primary">Edit</button>
+          <button type="button" class="btn btn-outline-info">Open</button>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 <nav aria-label="Page navigation example">
