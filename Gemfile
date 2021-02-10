@@ -35,6 +35,7 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'standard'
+  gem 'bootstrap', '~> 5.0.0.beta1'
 end
 
 group :development, :test do
