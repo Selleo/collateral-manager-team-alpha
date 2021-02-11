@@ -26,7 +26,7 @@ class CollateralsController < ApplicationController
   end
 
   def update
-    @article = Collateral.find(params[:id])
+    @collateral = Collateral.find(params[:id])
 
     if @collateral.update(collateral_params)
       redirect_to @collateral
