@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :collaterals do
     resources :tags
   end
+
+  resources :tags
+
 end
