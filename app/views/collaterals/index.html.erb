@@ -12,7 +12,11 @@
       <tr>
         <th><a href="<%= collateral.link %>"> <%= collateral.title %></a></th>
         <th><%= collateral.content_type %></th>
-        <th></th>
+        <th>
+          <% collateral.tags.each do |tag| %>
+            <span class="badge bg-success"><%= tag.category %>:<%= tag.name %></span>
+          <% end %>
+        </th>
         <td>
           <a href="/collaterals/<%= collateral.id %>/edit" class="btn btn-outline-primary">Edit</a>
           <a href="/collaterals/<%= collateral.id %>" class="btn btn-outline-info">Open</a>
