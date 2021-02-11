@@ -14,7 +14,10 @@ class CollateralsController < ApplicationController
   def create
     @collateral = Collateral.new(collateral_params)
 
+
     if @collateral.save
+      @collateral_tags = @collateral.collaterals_tags.build(collateral_params.collaterals_tags)
+      @collateral_tags.save
       redirect_to @collateral
     else
       render :new
@@ -44,6 +47,6 @@ class CollateralsController < ApplicationController
 
   private
     def collateral_params
-      params.require(:collateral).permit(:title, :link, :content_type)
+      params.require(:collateral).permit(:title, :link, :content_type, collaterals_tags[])
     end
 end
