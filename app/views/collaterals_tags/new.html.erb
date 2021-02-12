@@ -1,0 +1,7 @@
+Test
+
+<%= simple_form_for @collaterals_tag do |c| %>
+  <%= c.input :weight %>
+  <%= c.select :tag_id, Tags.all.map { |r| [r.name, r.id] }, include_blank: false %>
+  <%= c.button :submit %>
+<% end %>

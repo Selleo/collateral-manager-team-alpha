@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   #get "/collaterals/new", to: "collaterals#new"
 
   resources :collaterals do
-    resources :tags
+    resources :tags, controller: :collaterals_tags
   end
 
   resources :tags
+
+  get "/collaterals/:id/add_tags", to: "collaterals_tags#new"
+
+
 
 end
