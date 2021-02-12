@@ -22,7 +22,7 @@ class CollateralsTagsController < ApplicationController
     @collaterals_tag.collateral_id = params[:collateral_id]
 
     if @collaterals_tag.save
-      redirect_to @collaterals_tag
+      redirect_to new_collateral_tag_path(params[:collateral_id])
     else
       render :new
     end
