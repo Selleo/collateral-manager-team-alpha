@@ -3,6 +3,8 @@ class CollateralsTagsController < ApplicationController
   def index
     @collaterals_tag = CollateralsTag.new
     @collaterals_tag.collateral_id = params[:id]
+    @tags = Tag.all
+    binding.pry
   end
 
   def show
@@ -12,13 +14,15 @@ class CollateralsTagsController < ApplicationController
   def new
     @collaterals_tag = CollateralsTag.new
     @collaterals_tag.collateral_id = params[:id]
+    @tags = Tag.all
   end
 
   def create
     @collaterals_tag = CollateralsTag.new(tag_params)
+    @collaterals_tag.collateral_id = params[:collateral_id]
 
     if @collaterals_tag.save
-      redirect_to index
+      redirect_to @collaterals_tag
     else
       render :new
     end

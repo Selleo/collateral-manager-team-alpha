@@ -11,8 +11,5 @@ Rails.application.routes.draw do
 
   resources :tags
 
-  get "/collaterals/:id/add_tags", to: "collaterals_tags#new"
-
-
 
 end
