@@ -21,7 +21,6 @@ tags = [
   ['stack','nodejs'],
   ['stack','postgres'],
   ['stack','ruby'],
-  ['stack','rails'],
   ['stack','ember'],
   ['stack','mysql'],
   ['stack','nest'],

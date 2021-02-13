@@ -13,6 +13,7 @@ class CollateralsTagsController < ApplicationController
 
   def new
     @collaterals_tag = CollateralsTag.new
+    @collaterals = Collateral.all
     @collaterals_tag.collateral_id = params[:id]
     @tags = Tag.all
   end
