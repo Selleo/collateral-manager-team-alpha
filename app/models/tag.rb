@@ -4,4 +4,5 @@ class Tag < ApplicationRecord
 
   validates :category, presence: true
   validates :name, presence: true
+  validates :category, uniqueness: { scope: :name }
 end

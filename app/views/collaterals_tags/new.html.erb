@@ -1,7 +1,7 @@
 Add tags to: <%= @collaterals.find(params[:collateral_id]).title %>
 
 <%= simple_form_for @collaterals_tag, url: collateral_tags_path do |c| %>
-  <%= c.input :weight, collection: [25, 50, 75, 100], include_blank: false , as: :radio_buttons %>
+  <%= c.input :weight, collection: [25, 50, 75, 100], include_blank: false , as: :radio_buttons, :checked => 100 %>
   <%= c.select :tag_id, @tags.map { |r| [[r.category, r.name], r.id] }, include_blank: false, prompt: 'Select tag' %>
   <%= c.button :submit %>
 <% end %>

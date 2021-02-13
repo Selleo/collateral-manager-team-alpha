@@ -4,7 +4,6 @@ class CollateralsTagsController < ApplicationController
     @collaterals_tag = CollateralsTag.new
     @collaterals_tag.collateral_id = params[:id]
     @tags = Tag.all
-    binding.pry
   end
 
   def show
@@ -22,11 +21,11 @@ class CollateralsTagsController < ApplicationController
     @collaterals_tag = CollateralsTag.new(tag_params)
     @collaterals_tag.collateral_id = params[:collateral_id]
 
-    if @collaterals_tag.save
-      redirect_to new_collateral_tag_path(params[:collateral_id])
-    else
-      render :new
+    if @collaterals_tag.valid?
+      @collaterals_tag.save
     end
+
+    redirect_to new_collateral_tag_path(params[:collateral_id])
   end
 
   def edit
