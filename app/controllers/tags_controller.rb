@@ -1,5 +1,9 @@
 class TagsController < ApplicationController
 
+  def index
+    @tags = Tag.all.order(:category, :name)
+  end
+
   def show
     @tag = Tag.find(params[:id])
   end
@@ -36,7 +40,7 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
     @tag.destroy
 
-    redirect_to root_path
+    redirect_to @tag
   end
 
   private
