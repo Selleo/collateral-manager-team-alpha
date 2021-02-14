@@ -14,7 +14,10 @@ class CollateralsTagsController < ApplicationController
     @collaterals_tag = CollateralsTag.new
     @collaterals = Collateral.all
     @collaterals_tag.collateral_id = params[:id]
-    @tags = Tag.all.order(:category, :name)
+
+    exclude_tags = Tag.select(:id).includes("collaterals_tags").where(collaterals_tags: {collateral_id: params[:collateral_id]}).pluck(:id)
+
+    @tags = Tag.where.not(id: exclude_tags)
   end
 
   def create
