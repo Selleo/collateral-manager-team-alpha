@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
 
   def new
-    @tag = Tag.all
+
   end
 
   def create
