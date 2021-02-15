@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_165159) do
+ActiveRecord::Schema.define(version: 2021_02_13_104635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_165159) do
     t.string "content_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["title"], name: "index_collaterals_on_title", unique: true
   end
 
   create_table "collaterals_tags", force: :cascade do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_165159) do
     t.integer "weight"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["collateral_id", "tag_id"], name: "index_collaterals_tags_on_collateral_id_and_tag_id", unique: true
     t.index ["collateral_id"], name: "index_collaterals_tags_on_collateral_id"
     t.index ["tag_id"], name: "index_collaterals_tags_on_tag_id"
   end
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_165159) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category", "name"], name: "index_tags_on_category_and_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

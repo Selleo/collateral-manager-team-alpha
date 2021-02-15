@@ -1,40 +1,28 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Name</th>
+      <th scope="col">Title</th>
       <th scope="col">Type</th>
       <th scope="col">Tags</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>
-        <button type="button" class="btn btn-outline-primary">Edit</button>
-        <button type="button" class="btn btn-outline-info">Open</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>
-        <button type="button" class="btn btn-outline-primary">Edit</button>
-        <button type="button" class="btn btn-outline-info">Open</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry the Bird</td>
-      <td>@twitter</td>
-      <td>
-        <button type="button" class="btn btn-outline-primary">Edit</button>
-        <button type="button" class="btn btn-outline-info">Open</button>
-      </td>
-    </tr>
+    <% @collaterals.each do |collateral|%>
+      <tr>
+        <th><a href="<%= collateral.link %>"> <%= collateral.title %></a></th>
+        <th><%= collateral.content_type %></th>
+        <th>
+          <% collateral.tags.each do |tag| %>
+            <span class="badge bg-success"><%= tag.category %>: <%= tag.name %></span>
+          <% end %>
+        </th>
+        <td>
+          <a href="/collaterals/<%= collateral.id %>/edit" class="btn btn-outline-primary">Edit</a>
+          <a href="/collaterals/<%= collateral.id %>" class="btn btn-outline-info">Open</a>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 <nav aria-label="Page navigation example">

@@ -1,3 +1,4 @@
+CollateralsTag.delete_all
 Tag.delete_all
 Collateral.delete_all
 
@@ -8,17 +9,47 @@ Collateral.delete_all
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 tags = [
+  ['language','pl'],
+  ['language','cz'],
+  ['language','de'],
+  ['language','en'],
+  ['stack','rails'],
+  ['stack','python'],
+  ['stack','js'],
+  ['stack','nodejs'],
+  ['stack','postgres'],
+  ['stack','ruby'],
+  ['stack','ember'],
+  ['stack','mysql'],
+  ['stack','nest'],
   ['country','Poland'],
   ['country','Germany'],
-  ['country','Czech']
+  ['country','Czech'],
+  ['country','USA'],
+  ['country','France'],
+  ['country','Romania']
 ]
-tags.each { |cat,name| Tag.create(category: cat, name: name) }
+tags.each { | category, name | Tag.create(category: category, name: name) }
 
 collaterals =[
-  ['Ruby For Beginners1','https://guides.rubyonrails.org/getting_started.html1', 'Article1'],
-  ['Ruby For Beginners2','https://guides.rubyonrails.org/getting_started.html2','Article2'],
-  ['Ruby For Beginners3','https://guides.rubyonrails.org/getting_started.html3','Article3']
+  ['Ruby For Beginners','https://guides.rubyonrails.org/getting_started.html', 'Article'],
+  ['Universal Avenue','https://selleo.com/portfolio/b2b-ecommerce-solution','Article'],
+  ['Payment integration','https://guides.rubyonrails.org/getting_started.html3','Article'],
+  ['CMS','https://guides.rubyonrails.org/getting_started.html3','Article'],
+  ['E-learning','https://guides.rubyonrails.org/getting_started.html3','Article'],
+  ['Fintech','https://guides.rubyonrails.org/getting_started.html3','Article']
 ]
-collaterals.each { |title,link,content_type| Collateral.create(title: title, link: link, content_type:content_type) }
+collaterals.each { | title, link, content_type | Collateral.create( title: title, link: link, content_type: content_type ) }
 
+Collateral.all.each do | collateral |
+  i = 0
+  Tag.all.each do | tag |
+    if rand(1...10).even?
+      CollateralsTag.create(collateral_id: collateral.id, tag_id: tag.id, weight: [25, 50, 75, 100].sample)
+      i += 1
+      break if i == 5
+    end
+  end
+end

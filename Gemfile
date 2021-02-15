@@ -36,7 +36,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'standard'
   gem 'bootstrap', '~> 5.0.0.beta1'
-  gem 'simple_form'
 end
 
 group :development, :test do

@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Category</th>
+      <th scope="col">Name</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag|%>
+      <tr>
+        <th><%= tag.category %></a></th>
+        <th><%= tag.name %></th>
+        <td>
+          <a href="/tags/<%= tag.id %>/edit" class="btn btn-outline-primary">Edit</a>
+          <a href="/tags/<%= tag.id %>" class="btn btn-outline-info">Open</a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
