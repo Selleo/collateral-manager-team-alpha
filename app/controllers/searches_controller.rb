@@ -7,9 +7,8 @@ class SearchesController < ApplicationController
   def create
 
     tags_array = params[:search][:tag_ids]
-
-    @collateral = Collateral.joins(collaterals_tags: :tag).where(tags: {id: tags_array}).distinct
-
+    @collaterals = Collateral.joins(collaterals_tags: :tag).where(tags: {id: tags_array}).distinct
+    render :show #or 'collateralsindex'
   end
 
   private
