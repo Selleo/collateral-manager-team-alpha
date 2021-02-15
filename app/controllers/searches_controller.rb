@@ -1,28 +1,19 @@
 class SearchesController < ApplicationController
 
   def new
-
     @tag = Tag.joins(:collaterals_tags).distinct
-
   end
 
   def create
 
-    @tag = Tag.new(params)
+    tags_array = params[:search][:tag_ids]
 
-    @collateral = Collateral.joins(collaterals_tags: :tag).where(tags: {id: test}).distinct
+    @collateral = Collateral.joins(collaterals_tags: :tag).where(tags: {id: tags_array}).distinct
 
-    # @collateral = Collateral.new(collateral_params)
-    #
-    # if @collateral.save
-    #   redirect_to @collateral
-    # else
-    #   render :new
-    # end
   end
 
   private
-  def params
-    params.require(:tag).permit(:id)
+  def tag_params
+    params.require(:search).permit
   end
 end
