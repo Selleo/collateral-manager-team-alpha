@@ -12,8 +12,9 @@
         <th><%= tag.category %></a></th>
         <th><%= tag.name %></th>
         <td>
-          <a href="/tags/<%= tag.id %>/edit" class="btn btn-outline-primary">Edit</a>
           <a href="/tags/<%= tag.id %>" class="btn btn-outline-info">Open</a>
+          <a href="/tags/<%= tag.id %>/edit" class="btn btn-outline-primary">Edit</a>
+          <%= link_to 'Delete', tag, method: :delete, class:"btn btn-outline-danger", data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>

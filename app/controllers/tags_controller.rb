@@ -37,6 +37,8 @@ class TagsController < ApplicationController
   end
 
   def destroy
+    collaterals_tags = CollateralsTag.where(tag_id: params[:id])
+    collaterals_tags.destroy_all
     @tag = Tag.find(params[:id])
     @tag.destroy
 

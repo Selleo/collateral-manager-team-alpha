@@ -36,10 +36,14 @@ class CollateralsController < ApplicationController
   end
 
   def destroy
+    collaterals_tags = CollateralsTag.where(collateral_id: params[:id])
+    collaterals_tags.destroy_all
     @collateral = Collateral.find(params[:id])
     @collateral.destroy
-
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_url, notice: "Post was successfully destroyed." }
+      format.json { head :no_content }
+    end
   end
 
   private
