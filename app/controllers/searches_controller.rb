@@ -8,9 +8,7 @@ class SearchesController < ApplicationController
 
     tags_array = params[:search][:tag_ids]
 
-    # @collaterals = Collateral.joins(collaterals_tags: :tag).where(tags: {id: tags_array}).distinct
-
-    @Weighted_Collaterals = TopMatchingCollateral.new(tags_array).calculate_weight
+    @Weighted_Collaterals = TopMatchingCollateral.new(tags_array).sort_hash
 
     @tag = Tag.where(id: tags_array).order(:category, :name)
 
