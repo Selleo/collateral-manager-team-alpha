@@ -27,6 +27,8 @@ gem 'simple_form'
 gem "title"
 gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin, :jruby]
 gem "webpacker"
+gem 'kaminari'
+
 
 group :development do
   gem "web-console"

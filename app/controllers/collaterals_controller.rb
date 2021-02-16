@@ -1,6 +1,6 @@
 class CollateralsController < ApplicationController
   def index
-    @collaterals = Collateral.all
+    @collaterals = Collateral.page(params[:page])
   end
 
   def show
@@ -44,6 +44,6 @@ class CollateralsController < ApplicationController
 
   private
     def collateral_params
-      params.require(:collateral).permit(:title, :link, :content_type)
+      params.require(:collateral).permit(:title, :link, :content_type, :page)
     end
 end
