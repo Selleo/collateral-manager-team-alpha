@@ -1,5 +1,10 @@
 <h1>New search</h1>
 <%= simple_form_for :search do |s| %>
-  <%= s.collection_check_boxes :tag_ids, @tag, :id, :name %>
-  <%= s.button :submit %>
+  <%= s.collection_check_boxes :tag_ids, @tag.order(:name), :id, :name do |b| %>
+    <div class="collection-check-box">
+      <%= b.check_box %>
+      <%= b.label %>
+    </div>
+  <% end %>
+  <%= s.button :submit, 'Search' %>
 <% end %>

@@ -13,7 +13,7 @@
         <th><a href="<%= collateral.link %>"> <%= collateral.title %></a></th>
         <th><%= collateral.content_type %></th>
         <th>
-          <% collateral.tags.each do |tag| %>
+          <% collateral.tags.order(:category, :name).each do |tag| %>
             <span class="badge bg-success"><%= tag.category %>: <%= tag.name %></span>
           <% end %>
         </th>

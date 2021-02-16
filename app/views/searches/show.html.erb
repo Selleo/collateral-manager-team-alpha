@@ -1,4 +1,9 @@
-<h3>SHOW SEARCH TEST</h3>
+<h2>Show searched</h2>
+
+<% @tag.each do |tag|%>
+  <span class="badge bg-success"><%= tag.category %>: <%= tag.name %> </span>
+<% end %>
+
 <table class="table">
   <thead>
   <tr>
