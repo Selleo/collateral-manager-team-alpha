@@ -12,6 +12,6 @@ class SearchesController < ApplicationController
 
     @tag = Tag.where(id: tags_array).order(:category, :name)
 
-    render :show #or 'collateralsindex'
+    render :show
   end
 end
