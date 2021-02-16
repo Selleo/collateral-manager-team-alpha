@@ -9,15 +9,19 @@
   <tr>
     <th scope="col">Title</th>
     <th scope="col">Type</th>
+    <th scope="col">Weight</th>
     <th scope="col">Tags</th>
     <th scope="col">Actions</th>
   </tr>
   </thead>
   <tbody>
-  <% @collaterals.each do |collateral|%>
+  <% @Weighted_Collaterals.each do |collateral_map|%>
+
+  <% collateral = collateral_map[:collateral] %>
     <tr>
       <th><a href="<%= collateral.link %>"> <%= collateral.title %></a></th>
       <th><%= collateral.content_type %></th>
+      <th><%= collateral_map[:weight] %></th>
       <th>
         <% collateral.tags.each do |tag| %>
           <span class="badge bg-success"><%= tag.category %>: <%= tag.name %></span>

@@ -1,6 +1,6 @@
 class CollateralsController < ApplicationController
   def index
-    @collaterals = Collateral.page(params[:page])
+    @collaterals = Collateral.page(params[:page]).per(5)
   end
 
   def show
