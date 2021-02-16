@@ -25,9 +25,13 @@
       <th>
         <% collateral.tags.each do |tag| %>
           <% if @tag.include? tag %>
-            <span class="badge bg-success"><%= tag.category %>: <%= tag.name %></span>
+            <span class="badge bg-success">
+              <%= tag.category %>: <%= tag.name %>
+            </span>
           <% else %>
-            <span class="badge bg-secondary"><%= tag.category %>: <%= tag.name %></span>
+            <span class="badge bg-secondary">
+              <%= tag.category %>: <%= tag.name %>
+            </span>
           <% end %>
         <% end %>
       </th>
