@@ -1,9 +1,20 @@
 <div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <a href="/collaterals">Back to list</a>
+    <a href="/collaterals/<%= @collateral.id%>/edit" >Edit</a>
+  </div>
   <div class="card-body">
     <h5 class="card-title"><%= @collateral.title %></h5>
     <p class="card-text"><%= @collateral.content_type %></p>
     <a href="<%= @collateral.link %>" class="btn btn-primary">👉 Go to collateral 🚀</a>
-    <a href="/collaterals/<%= @collateral.id %>/tags/new">Add tag</a>
+
+
+    <div class="collateral-tags">
+      <% @collateral.collaterals_tags.each do |ct| %>
+        <span class="badge badge-big tag-<%=ct.weight%>"><%= ct.tag.category %>: <%= ct.tag.name %> <%= ct.weight %>%</span>
+      <% end %>
+      <a href="/collaterals/<%= @collateral.id %>/tags/new">Add tag</a>
+    </div>
   </div>
 
 </div>

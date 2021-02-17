@@ -1,0 +1,24 @@
+.collateral-tags {
+  margin: 12px 0;
+
+  .badge-big {
+    padding: 8px;
+    font-size: 14px;
+  };
+}
+
+.tag-100 {
+  background-color: $green;
+}
+
+.tag-75 {
+  background-color: $blue;
+}
+
+.tag-50 {
+  background-color: $yellow;
+}
+
+.tag-25 {
+  background-color: $orange;
+}
