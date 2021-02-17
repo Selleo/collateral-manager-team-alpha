@@ -1,12 +1,27 @@
-Add tags to: <%= @collaterals.find(params[:collateral_id]).title %>
+<div class="card">
+  <div class="card-header d-flex justify-content-between">
+    <h2>Add tags to: <%= @collateral.title %></h2>
+    <a href="/collaterals/<%= @collateral.id%>" >Back to collateral</a>
+  </div>
 
-<%= simple_form_for @collaterals_tag, url: collateral_tags_path do |c| %>
-  <%= c.input :weight, collection: [25, 50, 75, 100], include_blank: false , as: :radio_buttons, :checked => 100 %>
-  <%= c.select :tag_id, @tags.order(:category, :name).map { |r| [r.category + ': ' + r.name, r.id] }, include_blank: false, prompt: 'Select tag' %>
-  <%= c.button :submit %>
-<% end %>
 
-<% @collaterals.find(params[:collateral_id]).tags.order(:category, :name).each do |tag| %>
-  <span class="badge bg-success"><%= tag.category %>: <%= tag.name %> </span>
-<% end %>
+  <div class="card-body">
+    <h6>Current tags:</h6>
+    <div class="collateral-tags">
+      <% @collateral.collaterals_tags.each do |ct| %>
+        <span class="badge tag-<%=ct.weight%>"><%= ct.tag.category %>: <%= ct.tag.name %> <%= ct.weight %>%</span>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= simple_form_for @collaterals_tag, url: collateral_tags_path do |c| %>
+        <%= c.input :weight, collection: [25, 50, 75, 100], include_blank: false , as: :radio_buttons, :checked => 100 %>
+        <%= c.select :tag_id, @tags.order(:category, :name).map { |r| [r.category + ': ' + r.name, r.id] }, include_blank: false, prompt: 'Select tag' %>
+        <%= c.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
 

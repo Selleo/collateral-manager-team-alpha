@@ -12,8 +12,8 @@ class CollateralsTagsController < ApplicationController
 
   def new
     @collaterals_tag = CollateralsTag.new
-    @collaterals = Collateral.all
     @collaterals_tag.collateral_id = params[:id]
+    @collateral = Collateral.find(params[:collateral_id])
 
     exclude_tags = Tag.select(:id).includes("collaterals_tags").where(collaterals_tags: {collateral_id: params[:collateral_id]}).pluck(:id)
 
