@@ -13,12 +13,13 @@ class TopMatchingCollateral
     @collaterals_with_weight = matching_collaterals.map do |collateral|
       {
         collateral: collateral,
-        weight: CollateralsTag.where(collateral_id: collateral.id, tag_id: @tags_array).pluck(:weight).sum
+        total_weight: CollateralsTag.where(collateral_id: collateral.id, tag_id: @tags_array).pluck(:weight).sum,
+        colleteral_tags: CollateralsTag.where(collateral_id: collateral.id, tag_id: @tags_array)
       }
     end
   end
 
   def sort_hash
-    sorted = calculate_weight.sort_by! { |a| -a[:weight]}
+    sorted = calculate_weight.sort_by! { |a| -a[:total_weight]}
   end
 end

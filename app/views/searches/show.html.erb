@@ -15,24 +15,24 @@
   </tr>
   </thead>
   <tbody>
-  <% @Weighted_Collaterals.each do |collateral_map|%>
+  <% @weighted_collaterals.each do |collateral_map|%>
 
   <% collateral = collateral_map[:collateral] %>
     <tr>
       <th><a href="<%= collateral.link %>"> <%= collateral.title %></a></th>
       <th><%= collateral.content_type %></th>
-      <th><%= collateral_map[:weight] %></th>
+      <th><%= collateral_map[:total_weight] %></th>
       <th>
-        <% collateral.tags.each do |tag| %>
-          <% if @tag.include? tag %>
-            <span class="badge bg-success">
-              <%= tag.category %>: <%= tag.name %>
+        <% collateral_map[:colleteral_tags].each do |colleteral_tag|%>
+          <span class="badge bg-success">
+              <%= colleteral_tag.tag.category %>: <%= colleteral_tag.tag.name %>: <%= colleteral_tag.weight %>
             </span>
-          <% else %>
+        <% end %>
+
+        <% (collateral.tags - collateral_map[:colleteral_tags].map(&:tag)).each do |tag| %>
             <span class="badge bg-secondary">
               <%= tag.category %>: <%= tag.name %>
             </span>
-          <% end %>
         <% end %>
       </th>
       <td>
