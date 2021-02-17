@@ -2,6 +2,7 @@ class SearchesController < ApplicationController
 
   def new
     @tag = Tag.joins(:collaterals_tags).distinct
+    @tag_gruped_by_category = @tag.group_by { |tag| tag[:category]}
   end
 
   def create
@@ -12,6 +13,6 @@ class SearchesController < ApplicationController
 
     @tag = Tag.where(id: tags_array).order(:category, :name)
 
-    render :show #or 'collateralsindex'
+    render :show
   end
 end
