@@ -46,10 +46,11 @@ class CollateralsTagsController < ApplicationController
   end
 
   def destroy
-    @collaterals_tag = CollateralsTag.find(params[:id])
-    @collaterals_tag.destroy
 
-    redirect_to root_path
+    @collaterals_tag = CollateralsTag.where(collateral_id: params[:collateral_id], tag_id: params[:id])
+    @collaterals_tag.destroy_all
+
+    redirect_to "/collaterals/#{params[:collateral_id]}/edit"
   end
 
   private
