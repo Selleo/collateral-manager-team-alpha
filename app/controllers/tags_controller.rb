@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
 
   def index
-    @tags = Tag.all.order(:category, :name)
+    @tags = Tag.all.order(:category, :name).page(params[:page]).per(5)
   end
 
   def show
