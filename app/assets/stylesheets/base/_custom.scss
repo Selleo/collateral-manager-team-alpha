@@ -41,3 +41,19 @@
     margin-top: 2px;
   }
 }
+
+.pagination {
+  display: inline-block;
+  position: fixed;
+  bottom: 20px;
+  border: 1px solid #ccc;
+
+  span {
+    padding: 8px;
+    border-right: 1px solid #ccc;
+
+    &:last-child {
+      border-right: none
+    }
+  }
+}
