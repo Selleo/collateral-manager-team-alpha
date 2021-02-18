@@ -5,4 +5,5 @@ class Collateral < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
   validates :link, presence: true
+  validates :content_type, presence: true, allow_blank: false
 end

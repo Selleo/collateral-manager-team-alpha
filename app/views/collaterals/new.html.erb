@@ -2,7 +2,6 @@
 <%= simple_form_for @collateral do |c| %>
   <%= c.input :title %>
   <%= c.input :link %>
-  <%= c.input :content_type %>
+  <%= c.input :content_type, collection: ["Article", "Blog", "Project", "Snippet"], include_blank: true, as: :select %>
   <%= c.button :submit %>
 <% end %>
-

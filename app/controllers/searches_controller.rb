@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
 
   def new
-    @tags = Tag.joins(:collaterals_tags).distinct
+    @tags = Tag.joins(:collaterals_tags).order(:name).distinct
     @tags_gruped_by_category = @tags.group_by { |tag| tag[:category]}
   end
 
