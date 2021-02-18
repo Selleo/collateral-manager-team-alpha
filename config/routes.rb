@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :collaterals, controller: :collaterals_tags
   end
 
-  get 'search', to: 'searches#new'
-  post 'search', to: 'searches#create'
+  get 'search/new', to: 'searches#new'
+  get 'search', to: 'searches#index'
 
 end

@@ -1,0 +1,48 @@
+<h2>Show searched</h2>
+
+<% @tags.each do |tag|%>
+  <span class="badge bg-success"><%= tag.category %>: <%= tag.name %> </span>
+<% end %>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Title</th>
+    <th scope="col">Type</th>
+    <th scope="col">Weight</th>
+    <th scope="col">Tags</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @weighted_collaterals.each do |collateral_map|%>
+
+    <% collateral = collateral_map[:collateral] %>
+    <tr>
+      <th><a href="<%= collateral.link %>"> <%= collateral.title %></a></th>
+      <th><%= collateral.content_type %></th>
+      <th><%= collateral_map[:total_weight] %></th>
+      <th>
+        <% collateral_map[:colleteral_tags].each do |colleteral_tag|%>
+          <span class="badge tag-<%= colleteral_tag.weight %>">
+              <%= colleteral_tag.tag.category %>: <%= colleteral_tag.tag.name %>: <%= colleteral_tag.weight %>%
+            </span>
+        <% end %>
+
+        <% (collateral.tags - collateral_map[:colleteral_tags].map(&:tag)).each do |tag| %>
+            <span class="badge bg-secondary">
+              <%= tag.category %>: <%= tag.name %>
+            </span>
+        <% end %>
+      </th>
+      <td>
+        <a href="/collaterals/<%= collateral.id %>/edit" class="btn btn-outline-primary">Edit</a>
+        <a href="/collaterals/<%= collateral.id %>" class="btn btn-outline-info">Open</a>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @weighted_collaterals %>
+
