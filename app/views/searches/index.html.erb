@@ -1,6 +1,17 @@
+<h1>New search</h1>
+
+<%= simple_form_for :search, url: search_url, method: "GET" do |s| %>
+  <div class="search-form">
+    <% @tags_grouped_by_category.each do |cat, tags| %>
+      <%= s.input :tag_ids, as: :check_boxes, collection: tags, label: cat, checked: @selectedTags %>
+    <% end %>
+  </div>
+  <%= s.button :submit, 'Search' %>
+<% end %>
+
 <h2>Show searched</h2>
 
-<% @tags.each do |tag|%>
+<% @selected_tags.each do |tag|%>
   <span class="badge bg-success"><%= tag.category %>: <%= tag.name %> </span>
 <% end %>
 
