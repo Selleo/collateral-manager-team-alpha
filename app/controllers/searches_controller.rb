@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
   end
 
   def index
-    tags_array = params[:tagIds]
+    tags_array = params[:search][:tag_ids]
     @weighted_collaterals = Kaminari.paginate_array(TopMatchingCollateral.new(tags_array).sort_hash).page(params[:page])
     @tags = Tag.where(id: tags_array).order(:category, :name)
   end

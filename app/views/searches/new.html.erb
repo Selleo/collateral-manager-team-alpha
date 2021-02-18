@@ -1,6 +1,6 @@
 <h1>New search</h1>
 
-<%= simple_form_for :search do |s| %>
+<%= simple_form_for :search, url: search_url, method: "GET" do |s| %>
   <div class="search-form">
     <% @tags_gruped_by_category.each do |cat, tags| %>
       <%= s.input :tag_ids, as: :check_boxes, collection: tags, label: cat %>
