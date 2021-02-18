@@ -1,8 +1,10 @@
 <h1>New search</h1>
 
 <%= simple_form_for :search do |s| %>
-  <% @tags_gruped_by_category.each do |cat, tags| %>
-    <%= s.input :tag_ids, as: :check_boxes, collection: tags, label: cat %>
-  <% end %>
+  <div class="search-form">
+    <% @tags_gruped_by_category.each do |cat, tags| %>
+      <%= s.input :tag_ids, as: :check_boxes, collection: tags, label: cat %>
+    <% end %>
+  </div>
   <%= s.button :submit, 'Search' %>
 <% end %>
