@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root "collaterals#index"
-
+  #root "users#sign_in"
   resources :collaterals do
     resources :tags, controller: :collaterals_tags
   end
