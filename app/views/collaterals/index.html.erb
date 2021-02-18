@@ -14,7 +14,7 @@
         <th><%= collateral.content_type %></th>
         <th>
           <% collateral.tags.order(:category, :name).each do |tag| %>
-            <span class="badge bg-success"><%= tag.category %>: <%= tag.name %></span>
+            <%= link_to "#{tag.category}: #{tag.name}", "/search/?search[tag_ids][]=#{tag.id}", method: :get, class:"badge bg-success" %>
           <% end %>
         </th>
         <td>
@@ -26,5 +26,4 @@
     <% end %>
   </tbody>
 </table>
-
 <%= paginate @collaterals %>
